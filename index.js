@@ -203,3 +203,13 @@ function buttonFunc(){
 }
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
+function variableInterestRate2(prince,arr,periods){
+
+    for(let x=0;x<=arr.length-1;){
+        i=arr[x];
+        console.log("Last Stretch",name , "with an interest rate of ", i,mortgageCalculator(i/12,prince,periods,name) );
+        x+=1;
+    }
+}
+example=[.05,.055]
+variableInterestRate2(prince,example,periods)
