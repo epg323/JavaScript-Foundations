@@ -128,26 +128,78 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.055, your monthly rate is $1136"
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
+function variableInterestRate(prince,inte,periods){
+    var i=0.005;
+    let lb=inte-.025;
+    let up=inte+.015;
 
-var i=0.005;
-
-for(let x=.015;x<=.055;){
-  x=x+i;
-  console.log(name , "with an interest rate of ", x,mortgageCalculator(x/12,prince,periods,name) );
+    for(let x=.015;x<=.055;){
+    x=x+i;
+    console.log(name , "with an interest rate of ", x,mortgageCalculator(x/12,prince,periods,name) );
+    }
 }
-
-
+variableInterestRate(prince,.04,periods)
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
 
 /* Attempt any of the stretch goals below once you have finished the work above. Remember as always, these may require additional research beyond what you learned today */
 
 /*  🏡 Add  `Property Tax`, `Homeowner's insurance` and `HOA fees` as parameters in your function to calculate total monthly spending on housing */
-
+function mortgageCalculator2(i,p,n,name,credit,tax,insure,hoa){
+    if(credit>740) {
+      i= i-(.005/12);
+    }else if(credit<660){
+      i= i+(.005/12);
+    }else{
+      i=i;
+    }
+    var den= Math.pow((1+i),n) -1;
+    var num=i*Math.pow((1+i),n);
+    var monthlyRate=(p*(num/den))+tax+insure+hoa;
+  
+    
+    return name + " your monthly rate is $" +monthlyRate; 
+    
+  }
 
 /* 🏡 Build a calculator function that accepts `monthly payment` and `interest rate` and returns the maximum loan that a person could afford */
+function mortgageCalculatorStretch3(i,mr) {
+    //we are finding monthly p
+    let p = mr*12*30;
+    let name= "esaul";
+    let n=30*12;
+    i=i/12;
 
+    var den= Math.pow((1+i),n) -1;
+    var num=i*Math.pow((1+i),n);
+    var monthlyRate=p*(num/den);
+    let total= monthlyRate*12*30;
+    
+    return name + " your maximum loan is " + total; 
+  }
+  console.log("Task 8"+mortgageCalculatorStretch3(.05, 500))
+  
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
 
+function mortgageCalculatorStretch4(i,mr) {
+    //we are finding monthly p
+    let p = mr*12*30;
+    let name= "esaul";
+    let n=30*12;
+    i=i/12;
+
+    var den= Math.pow((1+i),n) -1;
+    var num=i*Math.pow((1+i),n);
+    var monthlyRate=p*(num/den);
+    let total= monthlyRate*12*30;
+    
+    return name + " your maximum loan is " + total; 
+  }
+function buttonFunc(){
+    var mr =prompt("please enter Monthly Rate");
+    var inte= prompt("please enter interest rate")
+    let ans=mortgageCalculatorStretch4(inte,mr);
+    document.getElementById("pop").innerHTML=ans;
+}
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
